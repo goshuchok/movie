@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   AppBar,
   Box,
@@ -8,9 +9,9 @@ import {
   Typography,
   List,
   ListItem,
-  ListItemButton,
   ListItemText,
   Hidden,
+  Button,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -22,19 +23,19 @@ const Navigation = () => {
   const list = () => (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
-        <ListItem>
-          <ListItemButton>
+        <Link to="settings">
+          <ListItem>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
             <ListItemText primary="Settings" />
-          </ListItemButton>
-        </ListItem>
+          </ListItem>
+        </Link>
       </List>
     </Box>
   );
   return (
-    <Box>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Hidden only={['lg', 'xl']}>
@@ -50,8 +51,15 @@ const Navigation = () => {
             </IconButton>
           </Hidden>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Movies recommendation
+            <Link to="/">Movies recommendation</Link>
           </Typography>
+          <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
+            <Link to="settings">
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                Settings
+              </Button>
+            </Link>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer
