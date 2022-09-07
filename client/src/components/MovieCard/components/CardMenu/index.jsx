@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const CardMenu = ({ onAddClick }) => {
+const CardMenu = ({ onCardSelect }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -44,7 +44,7 @@ const CardMenu = ({ onAddClick }) => {
           },
         }}
       >
-        <MenuItem onClick={onAddClick}>Select</MenuItem>
+        <MenuItem onClick={onCardSelect}>Select</MenuItem>
       </Menu>
     </>
   );
