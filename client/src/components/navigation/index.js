@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   AppBar,
   Box,
@@ -12,6 +12,7 @@ import {
   ListItemText,
   Hidden,
   Button,
+  Link,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -23,7 +24,7 @@ const Navigation = () => {
   const list = () => (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
-        <Link to="settings">
+        <Link to="settings" component={RouterLink}>
           <ListItem>
             <ListItemIcon>
               <SettingsIcon />
@@ -50,15 +51,23 @@ const Navigation = () => {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/">Movies recommendation</Link>
-          </Typography>
+          <Link component={RouterLink} to="/" sx={{ flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ color: 'white', flexGrow: 1 }}
+            >
+              Movies recommendation
+            </Typography>
+          </Link>
           <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
-            <Link to="settings">
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                Settings
-              </Button>
-            </Link>
+            <Button
+              component={RouterLink}
+              to="settings"
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Settings
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
